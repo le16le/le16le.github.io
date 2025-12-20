@@ -1,10 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Lily Alice Claudia Eustace</title>
-  <meta name="description" content="Official website of Lily Alice Claudia Eustace, actor and writer.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <title>Lily Alice Claudia Eustace</title>
+  <meta name="description" content="Official website of Lily Alice Claudia Eustace, actor and writer." />
+
+  <!-- Classy, fast system font stack (looks great on macOS/iOS/Windows/Android) -->
+  <style>
+    :root{
+      --bg: #fbfaf8;
+      --card: #ffffff;
+      --text: #121212;
+      --muted: #4a4a4a;
+      --border: rgba(18,18,18,.10);
+      --shadow: 0 18px 50px rgba(18,18,18,.08);
+      --radius: 20px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+
+    body{
+      margin: 0;
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(18,18,18,.05), transparent 55%),
+                  radial-gradient(900px 500px at 80% 20%, rgba(18,18,18,.04), transparent 60%),
+                  var(--bg);
+      font-family: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino,
+                   ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .wrap{
+      min-height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .card{
+      width: min(720px, 100%);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(22px, 4vw, 44px);
+    }
+
+    header{
+      display: grid;
+      gap: 12px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h1{
+      margin: 0;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      font-size: clamp(28px, 3.6vw, 44px);
+      line-height: 1.1;
+    }
+
+    .roles{
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(15px, 1.7vw, 18px);
+    }
+
+    .content{
+      padding-top: 18px;
+      display: grid;
+      gap: 14px;
+      font-size: clamp(15px, 1.7vw, 18px);
+    }
+
+    .content p{
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .links{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-top: 6px;
+    }
+
+    /* IMDb link: black, not underlined by default */
+    .imdb-link{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(18,18,18,.02);
+      color: #000;
+      text-decoration: none;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      font-weight: 500;
+    }
+
+    .imdb-link:hover{
+      transform: translateY(-1px);
+      background: rgba(18,18,18,.04);
+      border-color: rgba(18,18,18,.16);
+      text-decoration: none; /* keep no underline */
+    }
+
+    .imdb-link:focus{
+      outline: 3px solid rgba(18,18,18,.18);
+      outline-offset: 2px;
+    }
+
+    .dot{
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #000;
+      opacity: .6;
+      display: inline-block;
+    }
+
+    footer{
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .imdb-link{ transition: none; }
+      .imdb-link:hover{ transform: none; }
+    }
+  </style>
+
+  <!-- Schema.org Person (helps Google connect your site + IMDb) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -13,7 +155,40 @@
     "jobTitle": ["Actor", "Writer"],
     "url": "https://lilyclaudiaeustace.co.uk",
     "sameAs": [
-      "https://www.imdb.com/name/nm16468921"
+      "https://www.imdb.com/name/nm16468921/"
     ]
   }
   </script>
+</head>
+
+<body>
+  <div class="wrap">
+    <main class="card" role="main" aria-label="Official website">
+      <header>
+        <h1>Lily Alice Claudia Eustace</h1>
+        <p class="roles">Actor <span class="dot" aria-hidden="true"></span> Writer</p>
+      </header>
+
+      <section class="content">
+        <p>Official website of Lily Alice Claudia Eustace</p>
+
+        <div class="links">
+          <a class="imdb-link" href="https://www.imdb.com/name/nm16468921/" target="_blank" rel="noopener noreferrer">
+            IMDb profile
+          </a>
+        </div>
+      </section>
+
+      <footer>
+        <span>© <span id="year"></span> Lily Alice Claudia Eustace</span>
+        <span>lilyclaudiaeustace.co.uk</span>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Sets the current year automatically
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
