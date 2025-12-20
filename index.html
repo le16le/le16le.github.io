@@ -7,30 +7,37 @@
   <title>Lily Alice Claudia Eustace</title>
   <meta name="description" content="Official website of Lily Alice Claudia Eustace, actor and writer." />
 
-  <!-- Classy, fast system font stack (looks great on macOS/iOS/Windows/Android) -->
+  <!-- Optional: a refined, editorial Google Font pairing -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --bg: #fbfaf8;
-      --card: #ffffff;
-      --text: #121212;
-      --muted: #4a4a4a;
-      --border: rgba(18,18,18,.10);
-      --shadow: 0 18px 50px rgba(18,18,18,.08);
-      --radius: 20px;
+      --bg: #f7f4ef;
+      --card: rgba(255,255,255,.72);
+      --text: #111111;
+      --muted: rgba(17,17,17,.68);
+      --border: rgba(17,17,17,.12);
+      --shadow: 0 24px 70px rgba(17,17,17,.10);
+      --radius: 26px;
+      --ring: rgba(17,17,17,.20);
     }
 
-    * { box-sizing: border-box; }
+    *{ box-sizing: border-box; }
     html, body { height: 100%; }
 
     body{
       margin: 0;
       color: var(--text);
-      background: radial-gradient(1200px 600px at 20% 0%, rgba(18,18,18,.05), transparent 55%),
-                  radial-gradient(900px 500px at 80% 20%, rgba(18,18,18,.04), transparent 60%),
-                  var(--bg);
-      font-family: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino,
-                   ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-      line-height: 1.5;
+      background:
+        radial-gradient(900px 520px at 15% 5%, rgba(17,17,17,.06), transparent 60%),
+        radial-gradient(720px 480px at 85% 25%, rgba(17,17,17,.05), transparent 62%),
+        radial-gradient(520px 520px at 35% 85%, rgba(17,17,17,.04), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.65), transparent 32%),
+        var(--bg);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.55;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
@@ -39,110 +46,161 @@
       min-height: 100%;
       display: grid;
       place-items: center;
-      padding: 24px;
+      padding: 28px;
+    }
+
+    .frame{
+      width: min(820px, 100%);
+      position: relative;
+    }
+
+    /* Soft glow “aurora” behind the card */
+    .frame::before{
+      content:"";
+      position:absolute;
+      inset:-24px;
+      background:
+        radial-gradient(240px 240px at 15% 15%, rgba(17,17,17,.10), transparent 60%),
+        radial-gradient(260px 260px at 85% 30%, rgba(17,17,17,.09), transparent 62%),
+        radial-gradient(220px 220px at 40% 95%, rgba(17,17,17,.07), transparent 60%);
+      filter: blur(18px);
+      opacity: .55;
+      pointer-events: none;
+      z-index: 0;
     }
 
     .card{
-      width: min(720px, 100%);
+      position: relative;
+      z-index: 1;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: clamp(22px, 4vw, 44px);
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    /* Subtle top highlight */
+    .card::before{
+      content:"";
+      position:absolute;
+      inset: 0 0 auto 0;
+      height: 120px;
+      background: linear-gradient(180deg, rgba(255,255,255,.70), rgba(255,255,255,0));
+      opacity: .7;
+      pointer-events: none;
+    }
+
+    .inner{
+      padding: clamp(22px, 4.5vw, 52px);
+      display: grid;
+      gap: 22px;
     }
 
     header{
       display: grid;
-      gap: 12px;
+      gap: 10px;
       padding-bottom: 18px;
       border-bottom: 1px solid var(--border);
     }
 
     h1{
       margin: 0;
+      font-family: Newsreader, ui-serif, Georgia, "Times New Roman", serif;
       font-weight: 600;
-      letter-spacing: -0.02em;
-      font-size: clamp(28px, 3.6vw, 44px);
-      line-height: 1.1;
+      letter-spacing: -0.03em;
+      font-size: clamp(32px, 4.2vw, 56px);
+      line-height: 1.02;
     }
 
     .roles{
       margin: 0;
       color: var(--muted);
       font-size: clamp(15px, 1.7vw, 18px);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .pill{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,.45);
+      color: rgba(17,17,17,.75);
+      font-weight: 500;
     }
 
     .content{
-      padding-top: 18px;
       display: grid;
       gap: 14px;
       font-size: clamp(15px, 1.7vw, 18px);
-    }
-
-    .content p{
-      margin: 0;
       color: var(--muted);
     }
 
     .links{
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      margin-top: 6px;
+      gap: 12px;
+      margin-top: 4px;
     }
 
-    /* IMDb link: black, not underlined by default */
+    /* IMDb button: black text, no underline */
     .imdb-link{
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 10px 14px;
+      gap: 10px;
+      padding: 12px 16px;
       border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(18,18,18,.02);
+      border: 1px solid rgba(17,17,17,.16);
+      background: rgba(255,255,255,.55);
       color: #000;
       text-decoration: none;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
       font-weight: 500;
+      transition: transform .14s ease, background .14s ease, border-color .14s ease, box-shadow .14s ease;
     }
 
     .imdb-link:hover{
       transform: translateY(-1px);
-      background: rgba(18,18,18,.04);
-      border-color: rgba(18,18,18,.16);
-      text-decoration: none; /* keep no underline */
+      background: rgba(255,255,255,.75);
+      border-color: rgba(17,17,17,.22);
+      box-shadow: 0 12px 24px rgba(17,17,17,.08);
+      text-decoration: none;
     }
 
     .imdb-link:focus{
-      outline: 3px solid rgba(18,18,18,.18);
-      outline-offset: 2px;
+      outline: 3px solid var(--ring);
+      outline-offset: 3px;
     }
 
-    .dot{
-      width: 6px;
-      height: 6px;
+    .icon-dot{
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background: #000;
-      opacity: .6;
+      opacity: .55;
       display: inline-block;
     }
 
     footer{
-      margin-top: 18px;
-      padding-top: 14px;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 13px;
       display: flex;
       justify-content: space-between;
       gap: 12px;
       flex-wrap: wrap;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      color: rgba(17,17,17,.55);
+      font-size: 13px;
     }
 
     @media (prefers-reduced-motion: reduce){
       .imdb-link{ transition: none; }
-      .imdb-link:hover{ transform: none; }
+      .imdb-link:hover{ transform: none; box-shadow: none; }
     }
   </style>
 
@@ -163,32 +221,39 @@
 
 <body>
   <div class="wrap">
-    <main class="card" role="main" aria-label="Official website">
-      <header>
-        <h1>Lily Alice Claudia Eustace</h1>
-        <p class="roles">Actor <span class="dot" aria-hidden="true"></span> Writer</p>
-      </header>
+    <div class="frame">
+      <main class="card" role="main" aria-label="Official website">
+        <div class="inner">
+          <header>
+            <h1>Lily Alice Claudia Eustace</h1>
+            <p class="roles">
+              <span class="pill"><span class="icon-dot" aria-hidden="true"></span> Actor</span>
+              <span class="pill"><span class="icon-dot" aria-hidden="true"></span> Writer</span>
+            </p>
+          </header>
 
-      <section class="content">
-        <p>Official website of Lily Alice Claudia Eustace</p>
+          <section class="content">
+            <p>Official website of Lily Alice Claudia Eustace.</p>
 
-        <div class="links">
-          <a class="imdb-link" href="https://www.imdb.com/name/nm16468921/" target="_blank" rel="noopener noreferrer">
-            IMDb profile
-          </a>
+            <div class="links">
+              <a class="imdb-link" href="https://www.imdb.com/name/nm16468921/" target="_blank" rel="noopener noreferrer">
+                IMDb profile
+              </a>
+            </div>
+          </section>
+
+          <footer>
+            <span>© <span id="year"></span> Lily Alice Claudia Eustace</span>
+            <span>lilyclaudiaeustace.co.uk</span>
+          </footer>
         </div>
-      </section>
-
-      <footer>
-        <span>© <span id="year"></span> Lily Alice Claudia Eustace</span>
-        <span>lilyclaudiaeustace.co.uk</span>
-      </footer>
-    </main>
+      </main>
+    </div>
   </div>
 
   <script>
-    // Sets the current year automatically
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
+
